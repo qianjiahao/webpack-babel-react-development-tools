@@ -1,6 +1,5 @@
 var fse = require('fs-extra');
 var fs = require('fs');
-
 var basePath = './dist';
 
 fs.readdir(basePath, function(err, subPath) {
@@ -17,10 +16,8 @@ fs.readdir(basePath, function(err, subPath) {
   }
 });
 
-
 var entry = {
-  'index': './app/index.js',
-  'demo': './app/demo.js'
+  'index': './app/index.js'
 }
 
 module.exports = {
