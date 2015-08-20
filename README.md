@@ -2,9 +2,11 @@
 
     git clone git@github.com:qianjiahao/ES6-dev.git
 
-    npm run start
+    npm run dev     // 开发环境
+    
+    npm run deploy  // 生产环境
 
-    browers localhost:5000/webpack-dev-server/bundle 
+    browers localhost:3000/webpack-dev-server
 
 #### 每次启动会删除旧文件
 
