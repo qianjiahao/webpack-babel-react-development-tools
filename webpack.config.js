@@ -1,5 +1,4 @@
 var path = require('path');
-var basePath = path.resolve(__dirname,'dist');
 
 var entry = module.exports.entry = {
   'index': './app/index.js'
