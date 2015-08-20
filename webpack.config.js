@@ -1,29 +1,14 @@
-var fse = require('fs-extra');
-var fs = require('fs');
-var basePath = './dist';
+var path = require('path');
+var basePath = path.resolve(__dirname,'dist');
 
-fs.readdir(basePath, function(err, subPath) {
-  if(subPath && subPath.length) {
-    console.log('------------>');
-    subPath.map(function(sub) {
-      console.log('Deleting ===> ' + sub);
-    });
-    console.log('------------>');
-
-    fse.emptyDir(basePath, function(err) {
-      if(err) return err;
-    });
-  }
-});
-
-var entry = {
+var entry = module.exports.entry = {
   'index': './app/index.js'
 }
 
-module.exports = {
+var config = module.exports = {
   entry: entry,
   output: {
-    path: 'dist',
+    path: path.resolve(__dirname,'dist'),
     filename: "bundle-[name].js"
   },
   resolve: {
@@ -38,7 +23,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"}
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=250000'
+      }
     ]
   }
 }
