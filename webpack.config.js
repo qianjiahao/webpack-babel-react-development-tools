@@ -1,8 +1,11 @@
 var path = require('path');
+var clean = require('./webpack.clean.js');
 
 var entry = module.exports.entry = {
   'index': './app/index.js'
 }
+
+console.log(__dirname);
 
 var config = module.exports = {
   entry: entry,
@@ -29,5 +32,8 @@ var config = module.exports = {
         loader: 'url?limit=250000'
       }
     ]
-  }
+  },
+  plugins: [
+    clean(path.join(__dirname,'dist'))
+  ]
 }

@@ -1,7 +1,8 @@
 var path = require('path');
 var fs = require('fs');
-var fse = require('fs-extra');
 var entry = require('./webpack.config.js').entry;
+var clean = require('./webpack.clean.js');
+
 
 module.exports = {
   entry: entry,
@@ -28,21 +29,8 @@ module.exports = {
         loader: 'url?limit=250000'
       }
     ]
-  }
+  },
+  plugins: [
+    clean(path.join(__dirname,'dist'))
+  ]
 };
-
-
-
-fs.readdir('./dist', function(err, subPath) {
-  if(subPath && subPath.length) {
-    console.log('------------>');
-    subPath.map(function(sub) {
-      console.log('Deleting ===> ' + sub);
-    });
-    console.log('------------>');
-
-    fse.emptyDir('./dist', function(err) {
-      if(err) return err;
-    });
-  }
-});
