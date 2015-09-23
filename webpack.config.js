@@ -5,8 +5,6 @@ var entry = module.exports.entry = {
   'index': './app/index.js'
 }
 
-console.log(__dirname);
-
 var config = module.exports = {
   entry: entry,
   output: {

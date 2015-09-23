@@ -2,7 +2,6 @@ var fs = require('fs');
 var path = require('path');
 var colors = require('colors');
 
-
 module.exports = function(dir) {
   return function() {
     var dirPath = dir;
