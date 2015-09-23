@@ -5,12 +5,14 @@ var colors = require('colors');
 module.exports = function(dirPath) {
   return function() {
     var isExist = fs.existsSync(dirPath);
-    var filePathContent = fs.readdirSync(dirPath);
 
     // 判断目录是否存在
     if(isExist) {
       try{
-        console.log('正在读取 --> ' + colors.yellow(dirPath));
+        console.log('正在读取 --> ' + colors.cyan(dirPath));
+
+        var filePathContent = fs.readdirSync(dirPath);
+
 
         // 判断目录是否为空
         if(filePathContent && filePathContent.length) {
@@ -25,20 +27,29 @@ module.exports = function(dirPath) {
                 // 删除文件
                 fs.unlinkSync(path.join(dirPath,filePath))
               }catch(e) {
-                console.log('文件 --> ' + colors.cyan(filePath) + ' 删除失败');
+                console.log('文件 --> ' + colors.red(filePath) + ' 删除失败');
                 console.log(colors.red(e));
               }
             }
           })
         }else{
-          console.log('目录 --> ' + colors.red(dirPath) + ' 读取为空');
+          console.log('目录 --> ' + colors.yellow(dirPath) + ' 读取为空');
         }
       }catch(e) {
         console.log('目录 --> ' + colors.red(dirPath) + ' 读取失败');
         console.log(colors.red(e));
       }
     }else{
-      console.log('目录 --> ' + colors.rad(dirPath) + ' 不存在');
+      console.log('目录 --> ' + colors.red(dirPath) + ' 不存在');
+
+      console.log('正在创建目录 --> ' + colors.cyan(dirPath));
+      fs.mkdirSync(dirPath);
+
+      if(fs.existsSync(dirPath)) {
+        console.log('目录 --> ' + colors.cyan(dirPath) + ' 创建成功');
+      }else{
+        console.log('目录 --> ' + colors.red(dirPath) + ' 创建失败');
+      }
     }
   }
 }
