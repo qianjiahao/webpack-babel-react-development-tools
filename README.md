@@ -14,7 +14,7 @@
 
     正在读取 --> /Users/qianjiahao/ES6-dev/dist
     正在删除 --> bundle-index.js
-    打包路径 --> /Users/qianjiahao/ES6-dev/dist
+    
     Hash: 15c762e1ead2e33285db
     Version: webpack 1.12.2
     Time: 1397ms
