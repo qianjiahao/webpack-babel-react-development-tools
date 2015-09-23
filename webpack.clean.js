@@ -2,16 +2,15 @@ var fs = require('fs');
 var path = require('path');
 var colors = require('colors');
 
-module.exports = function(dir) {
+module.exports = function(dirPath) {
   return function() {
-    var dirPath = dir;
     var isExist = fs.existsSync(dirPath);
     var filePathContent = fs.readdirSync(dirPath);
 
     // 判断目录是否存在
     if(isExist) {
       try{
-        console.log('正在读取 --> ' + colors.blue(dirPath));
+        console.log('正在读取 --> ' + colors.yellow(dirPath));
 
         // 判断目录是否为空
         if(filePathContent && filePathContent.length) {
@@ -34,7 +33,6 @@ module.exports = function(dir) {
         }else{
           console.log('目录 --> ' + colors.red(dirPath) + ' 读取为空');
         }
-        console.log('打包路径 --> ' + colors.yellow(dirPath))
       }catch(e) {
         console.log('目录 --> ' + colors.red(dirPath) + ' 读取失败');
         console.log(colors.red(e));
