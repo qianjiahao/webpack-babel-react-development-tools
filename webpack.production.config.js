@@ -1,8 +1,6 @@
 var path = require('path');
-var fs = require('fs');
-var entry = require('./webpack.config.js').entry;
+var entry = require('./webpack.entry.js');
 var clean = require('./webpack.clean.js');
-
 
 module.exports = {
   entry: entry,
@@ -13,6 +11,9 @@ module.exports = {
   resolve: {
     modulesDirectories: ['', 'node_modules','assets/styles']
   },
+  alias: {
+    'react': 'react/dist/react.min.js'
+  },
   module: {
     loaders: [
       {
@@ -20,14 +21,14 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel?optional[]=runtime&stage=0'
       },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      },
-      {
-        test: /\.(png|jpg)$/,
-        loader: 'url?limit=250000'
-      }
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style-loader!css-loader'
+      // },
+      // {
+      //   test: /\.(png|jpg)$/,
+      //   loader: 'url?limit=250000'
+      // }
     ]
   },
   plugins: [

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'customer.css';
+// import 'customer.css';
 
 let App = React.createClass({
   render() {

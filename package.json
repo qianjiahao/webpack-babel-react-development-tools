@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm install && webpack -config webpack.config.js",
     "dev": "npm install && webpack-dev-server --port 3000 --devtool eval --config webpack.config.js",
-    "deploy": "npm install && NODE_ENV=production webpack -p  --config webpack.production.config.js"
+    "deploy": "npm install && NODE_ENV=production webpack -p  --config webpack.production.config.js",
+    "effect": "npm install && webpack -config webpack.config.js --colors --profile --display-modules"
   },
   "author": "qianjiahao",
   "license": "ISC",

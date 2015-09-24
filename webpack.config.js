@@ -1,9 +1,6 @@
 var path = require('path');
 var clean = require('./webpack.clean.js');
-
-var entry = module.exports.entry = {
-  'index': './app/index.js'
-}
+var entry = require('./webpack.entry.js');
 
 var config = module.exports = {
   entry: entry,
@@ -21,14 +18,14 @@ var config = module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel?optional[]=runtime&stage=0'
       },
-      {
-        test: /\.css$/,
-        loader: "style-loader!css-loader"
-      },
-      {
-        test: /\.(png|jpg)$/,
-        loader: 'url?limit=250000'
-      }
+      // {
+      //   test: /\.css$/,
+      //   loader: "style-loader!css-loader"
+      // },
+      // {
+      //   test: /\.(png|jpg)$/,
+      //   loader: 'url?limit=250000'
+      // }
     ]
   },
   plugins: [
