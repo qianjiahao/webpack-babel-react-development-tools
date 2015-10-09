@@ -1,5 +1,6 @@
 var path = require('path');
-var clean = require('./webpack.clean.js');
+var cleaner = require('webpack-cleaner');
+
 var entry = require('./webpack.entry.js');
 
 var config = module.exports = {
@@ -29,6 +30,6 @@ var config = module.exports = {
     ]
   },
   plugins: [
-    clean(path.join(__dirname,'dist'))
+    cleaner(path.join(__dirname,'dist'))
   ]
 }

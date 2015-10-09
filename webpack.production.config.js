@@ -1,6 +1,7 @@
 var path = require('path');
+var cleaner = require('webpack-cleaner');
+
 var entry = require('./webpack.entry.js');
-var clean = require('./webpack.clean.js');
 
 module.exports = {
   entry: entry,
@@ -32,6 +33,6 @@ module.exports = {
     ]
   },
   plugins: [
-    clean(path.join(__dirname,'dist'))
+    cleaner(path.join(__dirname,'dist'))
   ]
 };
