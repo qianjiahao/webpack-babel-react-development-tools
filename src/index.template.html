@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{%= o.htmlWebpackPlugin.options.title%}</title>
+</head>
+<body>
+  <div id="content">
+    
+  </div>
+
+  {% for ( var key in o.htmlWebpackPlugin.files.js ) { %}
+    <script type="text/javascript" src={%= o.htmlWebpackPlugin.files.js[key]%}></script>
+  {% } %}
+</body>
+</html>

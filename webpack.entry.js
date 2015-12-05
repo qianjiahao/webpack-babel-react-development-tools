@@ -1,3 +1,3 @@
 var entry = module.exports = {
-  'index': './app/index.js'
+  'app': './src/app/app.js'
 }
