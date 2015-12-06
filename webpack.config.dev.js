@@ -12,19 +12,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css']
-      },
-      // {
-      //   test: /\.(png|jpg)$/,
-      //   loader: 'url?limit=250000'
-      // }
+      { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel' },
+      { test: /\.css$/, loaders: ['style', 'css'] },
+      { test: /\.(png|jpg)$/, loader: 'url?limit=250000' }
     ]
   },
   plugins: [
