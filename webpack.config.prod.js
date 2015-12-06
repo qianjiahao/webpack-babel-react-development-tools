@@ -22,7 +22,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
@@ -33,7 +33,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    }), 
+    }),
     new htmlWebpackPlugin({
       title: 'es2015 template',
       filename: 'index.html',

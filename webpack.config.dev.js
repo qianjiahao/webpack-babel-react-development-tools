@@ -1,7 +1,8 @@
-var cleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 var webpack = require('webpack');
 var entry = require('./webpack.entry.js');
+
+var cleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: entry,
@@ -24,6 +25,6 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
-    }),  
+    }),
   ]
 };

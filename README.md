@@ -1,29 +1,24 @@
-###简易ES6开发环境搭建
+###es2015 babel6 webpack react开发环境搭建
 
-    git clone git@github.com:qianjiahao/ES6-dev.git
+开发模式
 
-    npm run build   // 单纯打包（纯纯滴）
+    npm run build  (执行打包并watch文件变化，持续build)
 
-    npm run dev     // 开发环境
+    npm run gulp-watch  (需要重新开一个终端，让gulp来watch打包后的文件变化，同步刷新浏览器，ps:浏览器需要安装livereload插件)
 
-    npm run deploy  // 生产环境
+    npm run start-build  (需要重新开一个终端，起服务)
 
-    browers localhost:3000/webpack-dev-server
+生产环境
 
-#### 每次启动会删除旧文件
+    npm run prod  (执行打包并压缩文件，生成source-map ps:文件会在dist文件夹中)
 
-    正在读取 --> /Users/qianjiahao/ES6-dev/dist
-    正在删除 --> bundle-index.js
-    
-    Hash: 15c762e1ead2e33285db
-    Version: webpack 1.12.2
-    Time: 1397ms
-              Asset    Size  Chunks             Chunk Names
-    bundle-index.js  645 kB       0  [emitted]  index
-        + 162 hidden modules
+    npm run start-prod  (起服务)
 
-#### 将需要打包的文件及对应路径添加至entry
+####es2015 + babel6配置
 
-    var entry = {
-      'index': './app/index.js'
+    .babelrc 文件中配置
+    // 需安装 babel-preset-es2015 babel-preset-react 模块
+
+    {
+      "presets": ["es2015", "react"]
     }
