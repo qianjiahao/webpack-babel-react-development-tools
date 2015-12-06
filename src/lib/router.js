@@ -1,27 +1,22 @@
 import React from 'react';
-
+import { Router , Route , Link , IndexRoute } from 'react-router';
 /**
  * dependence module
  */
-import About from '../components/about.js';
-import Contact from '../components/contact.js';
-import Home from '../components/home.js';
+import Base from '../components/base.js';
+import BabelTab from '../components/babel-tab.js';
+import ReactTab from '../components/react-tab.js';
+import WebpackTab from '../components/webpack-tab.js';
 
-/**
- * export module
- */
-export default class Router extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>es2015 + babel6 + webpack + react !</h1>
-        <h2>auto rebuild and reload browser</h2>
-        <ul>
-          <li><Home /></li>
-          <li><Contact /></li>
-          <li><About /></li>
-        </ul>
-      </div>
-    )
-  }
-}
+let routes = (
+  <Router>
+    <Route path="/" component={Base}>
+      <IndexRoute component={BabelTab} />
+      <Route path="babel" component={BabelTab} />
+      <Route path="react" component={ReactTab} />
+      <Route path="webpack" component={WebpackTab} />
+    </Route>
+  </Router>
+);
+
+export default routes;

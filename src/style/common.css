@@ -1,15 +1,118 @@
 * {
-  padding: 10px;
+  padding: 0;
   margin: 0;
-  text-align: center;
 }
 
-ul li {
+.babel {
+  font-size: 60px;
+  text-align: center;
+  background-color: #f5da55;
+  color: #212220;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  width: 33.3%;
+  height: 80px;
   float: left;
-  list-style-type: none;
-  margin: 30px;
+}
+
+.react {
+  font-size: 60px;
+  text-align: center;
+  background-color: #2d2d2d;
+  color: #61dafb;
+  font-family: "proxima-nova","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+  width: 33.3%;
+  height: 80px;
+  float: left;
+}
+
+.webpack {
+  font-size: 60px;
+  text-align: center;
+  background-color: #eee;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  width: 33.3%;
+  height: 80px;
+  float: left;
+}
+
+.line {
+  margin: 30px auto;
+  border: 1px #eee solid;
+  width: 75%;
+
+
 }
 
 ul {
+  display: block;
+  width: 80%;
+  margin: 50px auto;
+}
+
+li {
+  width: 28%;
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  padding: 10px;
+  margin: 2%;
+  box-sizing: border-box;
+
+}
+
+.clearFix {
+  overflow:auto;
+  height:1%;
+}
+
+.linkItem {
+  width: 100%;
+  border: 10px #eee solid;
+  display: inline-block;
+  font-size: 40px;
+  text-decoration: none;
+  padding: 10px;
+  background-color: #cc7a6f;
+  color: white;
+  box-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+}
+
+.container {
+  width: 76%;
   margin: 0 auto;
+}
+
+.react-items {
+  float: left;
+  width: 33.3%;
+  padding: 10px;
+  box-sizing:border-box;
+  font-weight: bold;
+}
+
+.learn-more {
+  text-align: right;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.text-right {
+  float: right;
+}
+
+.github-link:visited,.github-link:hover, .github-link {
+  color: white;
+  text-decoration: none;
 }
