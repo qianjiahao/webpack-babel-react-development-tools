@@ -24,3 +24,7 @@
     {
       "presets": ["es2015", "react"]
     }
+
+参考demo请切换至pages分支
+
+    git checkout pages
