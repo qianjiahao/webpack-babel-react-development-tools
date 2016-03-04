@@ -1,30 +1,189 @@
-###[重构]JavaScript 2015 Development Tools 开发/生产环境
+#Introduction
 
-### Base on Webpack Babel React and Gulp
+###基础结构参考自https://github.com/gaearon/react-transform-boilerplate
+###作者Dan Abramov
 
-###Development[开发模式]
+##react-webpack-babel-development-tools
+在起基础之上添加了对主业务资源，js库资源，css资源的分离打包，和对生产环境html的模板的生成
 
-    npm run build  (执行打包并watch文件变化，持续build)
+#Usage
 
-    npm run gulp-watch  (需要重新开一个终端，让gulp来watch打包后的文件变化，同步刷新浏览器，ps:浏览器需要安装livereload插件)
+    git clone https://github.com/qianjiahao/webpack-babel-react-development-tools.git [your project name]
+    cd [your project name]
+    npm install
 
-    npm run start-build  (需要重新开一个终端，起服务)
+###development
+  
+    npm start -> http://localhost:3000
 
-###Production[生产环境]
+###production
 
-    npm run prod  (执行打包并压缩文件，生成source-map ps:文件会在dist文件夹中)
+    npm run build
 
-    npm run start-prod  (起服务)
 
-####Babel configuration
+#Detail
 
-    .babelrc 文件中配置
-    // 需安装 babel-preset-es2015 babel-preset-react 模块
+###分离主业务与库资源
 
-    {
-      "presets": ["es2015", "react"]
+    entry: {
+      app: [
+        'eventsource-polyfill', // necessary for hot reloading with IE
+        'webpack-hot-middleware/client',
+        './src/index'
+      ],
+      vendors: ['react']
+    },
+
+    // 将主业务与库资源分离，优势：当我们更新项目时，如果库资源没有涉及更新，直接打包主业务资源即可，并且分离库资源后的主资源文件大小也非常的小，可加快文件的下载速度，节省流量。
+
+
+    plugins: [
+      new webpack.optimize.CommonsChunkPlugin('vendors', '[name].js'),
+    ],
+
+    // 根据我们的entry打包库资源，名字由entry的名字命名。
+
+
+###分离合并样式资源文件
+
+    // 由于我们在entry的文件中引入了样式文件
+    import './styles/common.css';
+
+    var ExtractTextPlugin = require('extract-text-webpack-plugin');
+    
+    module: {
+      loaders: [
+        {
+          test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')
+        }
+      ]
     }
 
-参考demo请切换至pages分支
+    plugins: [
+      new ExtractTextPlugin('style.css')
+    ],
 
-    git checkout pages
+    // 我们需要 style-loader , css-loader 模块去加载引入的资源文件， 并通过 extract-text-webpack-plugin 来合并打包样式资源，命名为 style.css 。
+
+###加载打包图片
+
+    module: {
+      loaders: [
+        {
+          test: /\.(png|jpg)$/, loader: 'url?limit=250000'
+        }
+      ]
+    }
+
+    // 我们选择加载的图片格式为png或jpg，并限定当文件小于25kb，转换为base64编码，优势：将一些小并且不常更新的图片转换base64编码后，可以减少一次或多次http请求，但这个limit应该定义成一个合适的值，因为如果将稍大些的图片转为base64后，会生成大量字符，反而降低我们的加载速度。
+
+###加载font/svg
+
+    module: {
+      loaders: [
+        {
+          test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url?limit=10000&mimetype=application/font-woff"
+        },{
+          test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url?limit=10000&mimetype=application/octet-stream"
+        },{
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "file"
+        },{
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url?limit=10000&mimetype=image/svg+xml"
+        }
+      ]
+    }
+
+###加载Google Material icons
+
+    // 我们使用google开源的icon库，首先引入资源文件
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    // 本地我们需要定义一些样式  src/styles/font.css
+    
+    .material-icons {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;  /* Preferred icon size */
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+
+      /* Support for all WebKit browsers. */
+      -webkit-font-smoothing: antialiased;
+      /* Support for Safari and Chrome. */
+      text-rendering: optimizeLegibility;
+
+      /* Support for Firefox. */
+      -moz-osx-font-smoothing: grayscale;
+
+      /* Support for IE. */
+      font-feature-settings: 'liga';
+    }
+
+    /* Rules for sizing the icon. */
+    .material-icons.md-18 { font-size: 18px; }
+    .material-icons.md-24 { font-size: 24px; }
+    .material-icons.md-36 { font-size: 36px; }
+    .material-icons.md-48 { font-size: 48px; }
+    .material-icons.md-56 { font-size: 56px; }
+    .material-icons.md-64 { font-size: 64px; }
+    .material-icons.md-80 { font-size: 80px; }
+
+    /* Rules for using icons as black on a light background. */
+    .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+    .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+    /* Rules for using icons as white on a dark background. */
+    .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+    .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+    // 使用时就选择合适的icon即可，注意：在react中，class需要改为className
+
+    <i className="material-icons md-36">face</i>
+
+###生成html文件
+
+    // 定义模板 src/template/index.ejs
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+    </head>
+    <body>
+
+        <div id="root"></div>
+    </body>
+    </html>
+
+    var Html = require('html-webpack-plugin');
+
+    plugins: [
+      new Html({
+        title: 'webpack-babel-react-development-tools',
+        filename: 'index.html',
+        template: path.join(__dirname, 'src/template/index.ejs')
+      }),
+    ],
+
+    // 通过工具来生成我们的模板文件，title会替换index.ejs中的title，filename定义了生成文件的名字，template定义了模板的路径，[html-webpack-plugin@2.x版本后，工具生成的资源文件会已chunk的形式自动注入]。
+
+
+
+
+
+
+
