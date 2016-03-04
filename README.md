@@ -195,7 +195,9 @@ production
       }),
     ],
 
-    // 通过工具来生成我们的模板文件，title会替换index.ejs中的title，filename定义了生成文件的名字，template定义了模板的路径，[html-webpack-plugin@2.x版本后，工具生成的资源文件会已chunk的形式自动注入]。
+    // 通过工具来生成我们的模板文件，title会替换index.ejs中的title，
+    // filename定义了生成文件的名字，template定义了模板的路径，
+    // [html-webpack-plugin@2.x版本后，工具生成的资源文件会已chunk的形式自动注入]。
 
 生产环境
 
