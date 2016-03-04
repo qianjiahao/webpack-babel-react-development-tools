@@ -69,7 +69,8 @@ production
       new ExtractTextPlugin('style.css')
     ],
 
-    // 我们需要 style-loader , css-loader 模块去加载引入的资源文件， 并通过 extract-text-webpack-plugin 来合并打包样式资源，命名为 style.css 。
+    // 我们需要 style-loader , css-loader 模块去加载引入的资源文件，
+    并通过 extract-text-webpack-plugin 来合并打包样式资源，命名为 style.css 。
 
 加载打包图片
 
@@ -83,7 +84,10 @@ production
       ]
     }
 
-    // 我们选择加载的图片格式为png或jpg，并限定当文件小于25kb，转换为base64编码，优势：将一些小并且不常更新的图片转换base64编码后，可以减少一次或多次http请求，但这个limit应该定义成一个合适的值，因为如果将稍大些的图片转为base64后，会生成大量字符，反而降低我们的加载速度。
+    // 我们选择加载的图片格式为png或jpg，并限定当文件小于25kb，转换为base64编码。
+    // 优势：将一些小并且不常更新的图片转换base64编码后，可以减少一次或多次http请求。
+    // 但这个limit应该定义成一个合适的值，因为如果将稍大些的图片转为base64后，会生成大量字符，
+    // 反而降低我们的加载速度。
 
 加载font/svg
 
