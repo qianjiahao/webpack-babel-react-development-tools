@@ -5,7 +5,7 @@
 作者Dan Abramov
 
 ###react-webpack-babel-development-tools
-在起基础之上添加了对主业务资源，js库资源，css资源的分离打包，和对生产环境html的模板的生成
+在其基础之上添加了对主业务资源，js库资源，css资源的分离打包，和对生产环境html的模板的生成
 
 ##Usage
 
