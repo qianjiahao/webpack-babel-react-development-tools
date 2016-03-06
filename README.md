@@ -112,9 +112,9 @@ production
       ]
     }
 
-加载Google Material icons
+加载[Google Material icons](https://design.google.com/icons/)
 
-    // 我们使用google开源的icon库:[Google Material icons](https://design.google.com/icons/)，首先引入资源文件 src/template/index.ejs 、index.html
+    // 我们使用google开源的icon库，首先引入资源文件 src/template/index.ejs 、index.html
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
