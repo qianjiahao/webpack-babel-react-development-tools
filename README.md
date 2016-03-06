@@ -80,7 +80,7 @@ production
     module: {
       loaders: [
         {
-          test: /\.(png|jpg)$/, loader: 'url?limit=250000'
+          test: /\.(png|jpg)$/, loader: 'url?limit=25000'
         }
       ]
     }

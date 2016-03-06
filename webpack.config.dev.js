@@ -30,7 +30,7 @@ module.exports = {
       },{
         test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css')
       },{
-        test: /\.(png|jpg)$/, loader: 'url?limit=250000'
+        test: /\.(png|jpg)$/, loader: 'url?limit=25000'
       },{
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?limit=10000&mimetype=application/font-woff"
